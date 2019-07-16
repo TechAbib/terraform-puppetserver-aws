@@ -18,7 +18,10 @@ provisioner "remote-exec" {
             "sudo echo '127.0.0.1  puppetmaster.example.com  puppetmaster  puppet localhost localhost.localdomain' > /etc/hosts"
             "sudo wget https://s3.amazonaws.com/pe-builds/released/2018.1.3/puppet-enterprise-2018.1.3-ubuntu-16.04-amd64.tar.gz -O /root/puppetserver.tar.gz"
             "sudo usermod --password $(openssl passwd -1 {12345678}) root"
-            "wget https://s3.amazonaws.com/pe-builds/released/2018.1.3/puppet-enterprise-2018.1.3-ubuntu-16.04-amd64.tar.gz"
+            "tar -xvzf /root/puppetserver.tar.gz" 
+            "mv /root/puppet-enterprise* /root/puppetserver"
+            "wget pe.conf -O /root/pe.conf"
+            
             
     ]
   }
