@@ -20,9 +20,10 @@ provisioner "remote-exec" {
             "sudo usermod --password $(openssl passwd -1 {12345678}) root"
             "tar -xvzf /root/puppetserver.tar.gz" 
             "mv /root/puppet-enterprise* /root/puppetserver"
-            "wget pe.conf -O /root/pe.conf"
-            
-            
+            "wget https://raw.githubusercontent.com/officialabhradip/terraform-puppetserver-aws/master/pe.conf -O /root/pe.conf"
+            "bash /root/puppet-enterprise-installer -c /root/pe.conf"
+            "puppet agent -t"
+            "puppet agent -t"
     ]
   }
   
