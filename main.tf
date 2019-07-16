@@ -17,10 +17,8 @@ provisioner "remote-exec" {
             "sudo service ssh restart"
             "sudo echo '127.0.0.1  puppetmaster.example.com  puppetmaster  puppet localhost localhost.localdomain' > /etc/hosts"
             "sudo wget https://s3.amazonaws.com/pe-builds/released/2018.1.3/puppet-enterprise-2018.1.3-ubuntu-16.04-amd64.tar.gz -O /root/puppetserver.tar.gz"
-            "sudo /usr/bin/passwd root <<EOF
-12345678
-12345678
-EOF"
+            "sudo usermod --password $(openssl passwd -1 {12345678}) root"
+            
     ]
   }
   
