@@ -12,12 +12,9 @@ volume_size = "120"
 }
 provisioner "remote-exec" {
     inline = [
-        "echo "enabling password authentication for root user as per xenial configuration"
-     sudo sed -i '28s/prohibit-password/yes/' /etc/ssh/sshd_config
-     echo "enabling password authentication in general for ssh"
-     sudo sed -i '52s/no/yes/' /etc/ssh/sshd_config
-     echo "restarting SSH"
-     sudo service ssh restart
+        "sudo sed -i '28s/prohibit-password/yes/' /etc/ssh/sshd_config"
+        "sudo sed -i '52s/no/yes/' /etc/ssh/sshd_config"
+         "sudo service ssh restart
      echo "setting up hostname in hosts file"
      sudo echo "127.0.0.1  puppetmaster.example.com  puppetmaster  puppet localhost localhost.localdomain" > /etc/hosts
      echo "starting the download of puppet master"
